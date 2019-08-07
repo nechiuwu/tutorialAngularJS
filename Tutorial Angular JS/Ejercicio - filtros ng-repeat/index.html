@@ -17,9 +17,13 @@
     <script src="js/app.js"></script>
 
     <style>
-        .avatar{
+        .avatar {
             width: 75px;
             height: 75px;
+        }
+
+        .puntero {
+            cursor: pointer;
         }
     </style>
 
@@ -33,20 +37,28 @@
             Búsqueda:
             <br>
             <!-- Mi cabeza explotó aqui xD -->
-            <input type="text" ng-model="buscar" class="form-control" placeholder="Ingrese búsqueda">
+            <input type="text" ng-model="buscar.nombre" class="form-control" placeholder="Ingrese búsqueda">
             <br>
+            Sexo:
+            <select ng-model="buscar.sexo" class="form-control">
+                <option value="">Cualquiera</option>
+                <option value="mujer">Mujeres</option>
+                <option value="hombre">Hombres</option>
+            </select>
         </div>
 
         <table class="table table-striped">
             <tr>
                 <th>Avatar</th>
-                <th>Nombre</th>
-                <th>Sexo</th>
+                <!-- Permite jugar con el ascendente y descente en el orden de la lista al hacer click en el header :O-->
+                <th><a class="puntero" ng-click="columna='nombre'; reverse = !reverse;">Nombre</a></th>
+                <th><a class="puntero" ng-click="columna='sexo'; reverse = !reverse;">Sexo</a></th>
                 <th>Teléfono</th>
                 <th>Celular</th>
             </tr>
             <!-- Mi cabeza explotó aqui xD -->
-            <tr ng-repeat="persona in personas | filter:buscar">
+            <!-- Se puede asignar una variable para todos los filtros que se deseen hacer y esa variable se encargará de diferenciar -->
+            <tr ng-repeat="persona in personas | filter:buscar | orderBy: columna:reverse">
                 <td><img ng-src="img/{{ persona.avatar }}" class="avatar img-circle"></td>
                 <td>{{persona.nombre}}</td>
                 <td>{{persona.sexo}}</td>
@@ -57,3 +69,4 @@
     </div><!-- fin del listadoCtrl -->
 </body>
 </html>
+
