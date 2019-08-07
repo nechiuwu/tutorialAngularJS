@@ -24,12 +24,17 @@
             <h1>Detectar IPs</h1>
             <h4>Manejo de recursos online</h4>
             <hr>
-            
-        
 
+            IP: {{geo.geoplugin_request}}
+            <br>
 
+            País: {{geo.geoplugin_countryName}}
+            <br>
 
-
+            Moneda: {{geo.geoplugin_currencySymbol}}
+            <br>
+            <br>
+            {{geo | json}}
         </div><!-- fin del listadoCtrl -->
 
     </body>
