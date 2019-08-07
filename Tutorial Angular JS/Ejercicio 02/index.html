@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+ <html ng-app="universidadApp">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Ejercicio 02 - Profesor</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <script src="js/lib/angular.min.js"></script>
+  <script src="js/lib/app.js"></script>
+ </head>    
+ <body>
+
+  <!-- Div que muestra el nombre del profesor -->
+  <div class="container" ng-controller="profesorCtrl as profe">
+   <h1>Profesor</h1>
+   <h4>{{ profesor.nombre }}</h4>
+   <hr>
+   <div class="row">
+
+    <!-- Div que contiene la imagen del profesor -->
+    <div class="col-sm-3">
+     <section class="panel">
+      <div class="panel-body" align="center">
+       <img ng-src="{{ profesor.foto }}" class="img-circle" alt="" width="150px" height="150px">
+      </div>
+     </section>
+    </div>
+
+    <!-- Div, donde se mostrará la bio del profesor -->
+    <div class="col-sm-9">
+     <section class="panel">
+      <div class="panel-body">
+       {{profesor.bio}}
+       <br>
+       <br>
+       <strong>Edad:</strong> {{profesor.edad}} años
+       <br>
+       <button class="btn btn-primary" ng-click="editarProfesor()">Editar</button>
+      </div>
+     </section>
+    </div>
+   </div>
+
+   <!-- Show and hide / Functions in the buttons / Added animations-->
+   <div class="row animated fadeIn fast" ng-show="mostrarBox">
+    <div class="col-sm-6">
+     <section class="panel">
+      <div class="panel-body">
+       Nombre:
+       <input type="text" class="form-control" ng-model="editando.nombre">
+       <br>
+       Edad:
+       <input type="text" class="form-control" ng-model="editando.edad">
+       <br>
+       Bio:
+       <textarea class="form-control" rows="5" ng-model="editando.bio"></textarea>
+       <br>
+       <br>
+       <button class="btn btn-primary" ng-click="guardarCambios()">Guardar</button>
+       <button class="btn btn-danger" ng-click="cancelarCambios()">Cancelar</button>
+      </div>
+     </section>
+    </div>
+   </div>
+  </div>
+ </body>
+ </html>

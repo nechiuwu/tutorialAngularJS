@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="universidadApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Filtros - ng-repeat</title>
+
+
+    <!-- Incluir Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- Incluir AngularJS -->
+    <script src="js/lib/angular.min.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <style>
+        .avatar{
+            width: 75px;
+            height: 75px;
+        }
+    </style>
+
+</head>    
+<body>
+    <div class="container" ng-controller="listadoCtrl">
+        <h1>Filtros</h1>
+        <h4>Para el ng-repeat</h4>
+        <hr>
+        <div class="row">
+            Búsqueda:
+            <br>
+            <!-- Mi cabeza explotó aqui xD -->
+            <input type="text" ng-model="buscar" class="form-control" placeholder="Ingrese búsqueda">
+            <br>
+        </div>
+
+        <table class="table table-striped">
+            <tr>
+                <th>Avatar</th>
+                <th>Nombre</th>
+                <th>Sexo</th>
+                <th>Teléfono</th>
+                <th>Celular</th>
+            </tr>
+            <!-- Mi cabeza explotó aqui xD -->
+            <tr ng-repeat="persona in personas | filter:buscar">
+                <td><img ng-src="img/{{ persona.avatar }}" class="avatar img-circle"></td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.sexo}}</td>
+                <td>{{persona.telefono}}</td>
+                <td>{{persona.celular}}</td>
+            </tr>
+        </table>
+    </div><!-- fin del listadoCtrl -->
+</body>
+</html>
