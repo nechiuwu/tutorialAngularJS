@@ -1,0 +1,29 @@
+<h1>Vista: Alumno</h1>
+<h4>Alumno: {{alumno.nombre}}</h2>
+    <hr>
+    <p>
+        <div class="row">
+            <form ng-submit="guardarAlumno()">
+                Código:
+                <br>
+                <input type="text" class="form-control" ng-model="alumno.codigo" readonly="readonly">
+                <br>
+                Nombre:
+                <br>
+                <input type="text" class="form-control" ng-model="alumno.nombre" required>
+                <br>
+                Teléfono:
+                <br>
+                <input type="text" class="form-control" ng-model="alumno.telefono" ui-mask="{{mascaraTelefono}}" required>
+                <br>
+                Dirección:
+                <br>
+                <input type="text" class="form-control" ng-model="alumno.direccion" required>
+                <br>
+                <button type="submit" class="btn btn-warning">Guardar cambios</button>
+                <p class="text-success animated fadeIn fast" ng-show="actualizado">Registro actualizado</p>
+            </form>
+        </div>
+        <hr>
+        <p>{{alumno | json}}</p>
+    </p>

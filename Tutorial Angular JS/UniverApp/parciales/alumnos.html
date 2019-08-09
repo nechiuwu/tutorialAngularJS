@@ -1,0 +1,35 @@
+<h1>Alumnos</h1>
+<p>
+	Esta es la página de Alumnos
+	<br>
+	<hr>
+	<div>
+		Búsqueda
+		<input type="text" ng-model="buscar.nombre" class="form-control" placeholder="Ingrese un nombre">
+	</div>
+	<br>
+	<div class="row">
+		<table class="table table-striped">
+			<tr>
+				<th>Código</th>
+				<th ng-click='nombre'>Nombre</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
+				<th>Ver</th>
+			</tr>
+			<tr ng-repeat="al in alumnos | filter: buscar | limitTo: posicion | limitTo: -5">
+				<td>{{al.codigo}}</td>
+				<td>{{al.nombre}}</td>
+				<td>{{al.telefono | telefono}}</td>
+				<td>{{al.direccion}}</td>
+				<td><a href="#/vista-alumnos/{{al.codigo}}">Ver registro</a></td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<button class="btn btn-warning" ng-click="anterior()">Anterior</button>
+	<button class="btn btn-warning" ng-click="siguiente()">Siguiente</button>
+	<br>
+	<hr>
+	{{alumnos | json}}
+</p>
